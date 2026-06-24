@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a3f87" />
+  <meta name="description" content="Beyond the Job Title - Bingo interaktif untuk aktiviti pengenalan rakan sekerja." />
+  <title>Beyond the Job Title Bingo</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="wave wave-top" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">AKTIVITI INTERAKTIF</p>
+      <h1>BEYOND <span>THE JOB TITLE</span></h1>
+      <p class="tagline">Kenali manusia di sebalik jawatan. ♡</p>
+    </header>
+
+    <section class="game-card" aria-labelledby="game-title">
+      <div class="game-card__header">
+        <div>
+          <h2 id="game-title">Bingo Rakan Sekerja</h2>
+          <p>Tekan satu kotak selepas anda menemui rakan yang sesuai dengan pernyataan tersebut.</p>
+        </div>
+        <span class="bingo-badge" aria-label="Sasaran permainan ialah Bingo">BINGO</span>
+      </div>
+
+      <div class="player-row">
+        <label for="playerName">Nama pemain</label>
+        <input id="playerName" type="text" maxlength="40" autocomplete="name" placeholder="Contoh: Adilla" />
+      </div>
+
+      <aside class="instructions" aria-label="Arahan permainan">
+        <span aria-hidden="true">💡</span>
+        <p>Masukkan nama atau inisial rakan semasa menanda kotak. Setiap nama/inisial boleh digunakan untuk maksimum <strong>3 kotak</strong>. Lengkapkan satu baris, lajur atau diagonal untuk mendapat <strong>BINGO!</strong></p>
+      </aside>
+
+      <p class="progress" id="progress" role="status" aria-live="polite"></p>
+      <div id="bingoBoard" class="bingo-board" role="grid" aria-label="Papan Bingo Beyond the Job Title"></div>
+
+      <div class="actions">
+        <button class="button button--light" id="resetButton" type="button">↺ Reset tanda</button>
+        <button class="button button--light" id="newCardButton" type="button">⤨ Kad baharu</button>
+        <button class="button button--primary" id="qrButton" type="button">▣ Tunjuk QR</button>
+        <button class="button button--dark" id="shareButton" type="button">↗ Kongsi pautan</button>
+      </div>
+
+      <p class="storage-note">Kemajuan permainan disimpan pada pelayar peranti ini sahaja.</p>
+    </section>
+
+    <footer class="footer-message">
+      <span>✓ Kenali diri, hargai nilai.</span>
+      <span>♥ Berbeza kita, bermakna kita.</span>
+      <span>✓ Together, we grow.</span>
+    </footer>
+  </main>
+
+  <div class="modal" id="signModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-modal="signModal"></div>
+    <section class="modal__content" role="dialog" aria-modal="true" aria-labelledby="signModalTitle">
+      <button class="modal__close" type="button" data-close-modal="signModal" aria-label="Tutup">×</button>
+      <p class="modal__eyebrow">TANDAKAN KOTAK</p>
+      <h2 id="signModalTitle">Siapakah rakan ini?</h2>
+      <p id="selectedStatement" class="selected-statement"></p>
+      <label for="colleagueName">Nama atau inisial rakan sekerja</label>
+      <input id="colleagueName" type="text" maxlength="20" placeholder="Contoh: AH" autocomplete="off" />
+      <p class="form-message" id="signMessage" role="alert"></p>
+      <button class="button button--primary button--full" id="saveSignButton" type="button">Tandakan kotak</button>
+    </section>
+  </div>
+
+  <div class="modal" id="qrModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-modal="qrModal"></div>
+    <section class="modal__content qr-content" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+      <button class="modal__close" type="button" data-close-modal="qrModal" aria-label="Tutup">×</button>
+      <p class="modal__eyebrow">AKSES MELALUI TELEFON</p>
+      <h2 id="qrModalTitle">Imbas untuk main</h2>
+      <div id="qrCode" class="qr-code" aria-label="Kod QR untuk pautan permainan"></div>
+      <p class="qr-help">Buka halaman ini pada komputer selepas penerbitan, kemudian minta peserta mengimbas kod QR ini.</p>
+      <p id="qrUrl" class="qr-url"></p>
+      <p id="localWarning" class="local-warning" hidden>QR ini belum boleh digunakan untuk telefon kerana anda masih membuka fail secara lokal. Terbitkan di GitHub Pages dahulu.</p>
+      <button class="button button--dark button--full" id="copyUrlButton" type="button">Salin pautan permainan</button>
+    </section>
+  </div>
+
+  <div class="modal" id="winnerModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-modal="winnerModal"></div>
+    <section class="modal__content winner-content" role="dialog" aria-modal="true" aria-labelledby="winnerModalTitle">
+      <div class="winner-icon" aria-hidden="true">🎉</div>
+      <p class="modal__eyebrow">TAHNIAH</p>
+      <h2 id="winnerModalTitle">BINGO!</h2>
+      <p id="winnerText">Anda telah melengkapkan satu garisan.</p>
+      <button class="button button--primary button--full" type="button" data-close-modal="winnerModal">Teruskan bermain</button>
+    </section>
+  </div>
+
+  <div class="wave wave-bottom" aria-hidden="true"></div>
+
+  <!-- QRCode.js only creates the QR locally in the browser. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
